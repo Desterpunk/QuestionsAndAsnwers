@@ -117,3 +117,35 @@ export function postAnswer(answer) {
     }
 }
 
+export function fetchOwnerAnswers(userId) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(`${URL_BASE}/getOwnerAnswersAll/${userId}`)
+            const data = await response.json()
+            dispatch(success({ answers: data, redirect: null }))
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
+
+export function deleteAnswer(id) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            await fetch(`${URL_BASE}/deleteAnswer/${id}`,
+                {
+                    method: 'DELETE',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+            dispatch(success({redirect: `/answers`}));
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}

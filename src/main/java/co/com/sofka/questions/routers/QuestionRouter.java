@@ -88,4 +88,26 @@ public class QuestionRouter {
                         .body(BodyInserters.fromPublisher(deleteUseCase.apply(request.pathVariable("id")), Void.class))
         );
     }
+    @Bean
+    public RouterFunction<ServerResponse> getOwnerAnswersAll(OwnerAnswersListUseCase ownerAnswersListUseCase) {
+        return route(
+                GET("/getOwnerAnswersAll/{userId}"),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(
+                                ownerAnswersListUseCase.apply(request.pathVariable("userId")),
+                                AnswerDTO.class
+                        ))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> deleteAnswer(DeleteAnswerUseCase deleteAnswerUseCase) {
+        return route(
+                DELETE("/deleteAnswer/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.accepted()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(deleteAnswerUseCase.apply(request.pathVariable("id")), Void.class))
+        );
+    }
 }
