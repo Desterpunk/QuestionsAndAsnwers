@@ -105,3 +105,24 @@ body {
     float: right;
   }
   
+.btn_modal {
+  width: 100px;
+  margin: 10px;
+  height: 50px;
+  border-radius: 7px;
+}
+
+.pregunta{
+  margin: 35px;
+}
+
+.color1 {
+  background-color: #e80303;
+}
+
+.color2 {
+  background-color: #000000;
+  color: white;
+}
+
+  
