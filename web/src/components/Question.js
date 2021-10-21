@@ -1,17 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Modal } from 'reactstrap';
+import { fetchQuestionsByCategory } from '../actions/questionActions';
 import useModal from '../hooks/useModal';
 
-export const Question = ({ question, excerpt, onDelete}) => {
+export const Question = ({ question, excerpt, onDelete, dispatch}) => {
 
   const [isOpenModal, openModal, closeModal] = useModal();
 
   return (
   <article className={excerpt ? 'question-excerpt' : 'question'}>
     <h2>{question.question}</h2>
-    <p>{question.category}  - <small>{question.type}</small></p>
-   
+
+    <p> <span className="card-text"  onClick={() => {
+      if (dispatch !== undefined) dispatch(fetchQuestionsByCategory(question.category))
+    }}> {question.category}  </span> - <small>{question.type}</small> </p> 
+
     {onDelete && (
       <button className="button right" onClick={openModal}>DELETE</button>
     )}

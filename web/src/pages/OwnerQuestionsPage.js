@@ -3,8 +3,11 @@ import { connect } from 'react-redux'
 
 import { fetchOwnerQuestions, deleteQuestion } from '../actions/questionActions'
 import { Question } from '../components/Question'
+import Searcher from './Searcher'
 
 const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect, userId }) => {
+    let tittleQuestions = [];
+
     useEffect(() => {
         dispatch(fetchOwnerQuestions(userId))
     }, [dispatch, userId]);
@@ -25,15 +28,23 @@ const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect,
         if (hasErrors) return <p>Unable to display questions.</p>
 
         return questions.map(question => <Question
+            dispatch = {dispatch}
             key={question.id}
             question={question}
             excerpt onDelete={onDelete} />)
     }
 
+    const renderTittleQuestions = () => {
+        if (loading) return <p>Loading questions...</p>
+        if (hasErrors) return <p>Unable to display questions.</p>        
+        return questions && questions.map(q => tittleQuestions.push(q.question)) 
+    }
+
     return (
         <section>
             <h1>Questions</h1>
-            {renderQuestions()}
+            <Searcher suggestions={tittleQuestions} dispatch={dispatch} type="text" placeholder="Search" id="tittleQuestion" />
+            {renderTittleQuestions(),renderQuestions()}
         </section>
     )
 }

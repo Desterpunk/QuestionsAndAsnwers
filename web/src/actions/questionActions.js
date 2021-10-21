@@ -149,3 +149,29 @@ export function deleteAnswer(id) {
         }
     }
 }
+
+export function fetchQuestionsByCategory(category) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(`${URL_BASE}/findbycategory/${category}`)
+            const data = await response.json()
+            dispatch(success({ questions: data, redirect: null }))
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
+
+export function fetchQuestionsLike(search) {
+    return async dispatch => {
+        dispatch(loading())
+        try {
+            const response = await fetch(`${URL_BASE}/findbyquestionlike/${search}`)
+            const data = await response.json()
+            dispatch(success({ questions: data, redirect: null }))
+        } catch (error) {
+            dispatch(failure())
+        }
+    }
+}
