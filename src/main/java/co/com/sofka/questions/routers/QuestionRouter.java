@@ -110,4 +110,16 @@ public class QuestionRouter {
                         .body(BodyInserters.fromPublisher(deleteAnswerUseCase.apply(request.pathVariable("id")), Void.class))
         );
     }
+
+    @Bean
+    public RouterFunction<ServerResponse> findByCategory(FindByCategoryUseCase findByCategoryUseCase){
+        return route(
+          GET("/findbycategory/{category}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(findByCategoryUseCase.apply(
+                                request.pathVariable("category")),
+                                QuestionDTO.class))
+        );
+    }
 }
