@@ -1,7 +1,9 @@
 package co.com.sofka.questions.routers;
 
+import co.com.sofka.questions.collections.User;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
+import co.com.sofka.questions.model.UserDTO;
 import co.com.sofka.questions.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -132,6 +134,19 @@ public class QuestionRouter {
                         .body(BodyInserters.fromPublisher(findByQuestionLikeUseCase.apply(
                                 request.pathVariable("search")),
                                 QuestionDTO.class))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> createUser(CreateUserUseCase createUserUseCase) {
+        Function<UserDTO, Mono<ServerResponse>> executor = userDTO ->  createUserUseCase.apply(userDTO)
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .bodyValue(result));
+
+        return route(
+                POST("/createUser").and(accept(MediaType.APPLICATION_JSON)),
+                request -> request.bodyToMono(UserDTO.class).flatMap(executor)
         );
     }
 }
