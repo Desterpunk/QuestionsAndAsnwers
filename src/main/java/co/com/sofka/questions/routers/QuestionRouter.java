@@ -122,4 +122,16 @@ public class QuestionRouter {
                                 QuestionDTO.class))
         );
     }
+
+    @Bean
+    public RouterFunction<ServerResponse> findByQuestionLike(FindByQuestionLikeUseCase findByQuestionLikeUseCase){
+        return route(
+                GET("/findbyquestionlike/{search}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(findByQuestionLikeUseCase.apply(
+                                request.pathVariable("search")),
+                                QuestionDTO.class))
+        );
+    }
 }
