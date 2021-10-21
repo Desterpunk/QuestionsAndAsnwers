@@ -28,10 +28,12 @@ const OwnerQuestionsPage = ({ dispatch, loading, questions, hasErrors, redirect,
         if (hasErrors) return <p>Unable to display questions.</p>
 
         return questions.map(question => <Question
+            userId = {userId}
             dispatch = {dispatch}
             key={question.id}
             question={question}
-            excerpt onDelete={onDelete} />)
+            excerpt onDelete={onDelete} />
+            )
     }
 
     const renderTittleQuestions = () => {

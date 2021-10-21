@@ -4,7 +4,7 @@ import { Modal } from 'reactstrap';
 import { fetchQuestionsByCategory } from '../actions/questionActions';
 import useModal from '../hooks/useModal';
 
-export const Question = ({ question, excerpt, onDelete, dispatch}) => {
+export const Question = ({ question, excerpt, onDelete, dispatch, userId}) => {
 
   const [isOpenModal, openModal, closeModal] = useModal();
 
@@ -12,11 +12,17 @@ export const Question = ({ question, excerpt, onDelete, dispatch}) => {
   <article className={excerpt ? 'question-excerpt' : 'question'}>
     <h2>{question.question}</h2>
 
-    <p> <span className="card-text"  onClick={() => {
-      if (dispatch !== undefined) dispatch(fetchQuestionsByCategory(question.category))
-    }}> {question.category}  </span> - <small>{question.type}</small> </p> 
+    {userId === undefined && (
+      <p> <span className="card-text"  onClick={() => {
+        if (dispatch !== undefined) dispatch(fetchQuestionsByCategory(question.category))
+      }}> {question.category}  </span> - <small>{question.type}</small> </p> 
+    )}
 
-    {onDelete && (
+    {userId !== undefined && (
+        <p>  {question.category} - <small>{question.type}</small> </p>      
+    )}
+
+    {onDelete &&  (
       <button className="button right" onClick={openModal}>DELETE</button>
     )}
     {excerpt && (
