@@ -24,6 +24,7 @@ export const PrivateNavbar = () => (
       </div>
     <section>
       <Link to="/">Home</Link>
+      <Link to="/user">User</Link>
       <Link to="/questions">Questions</Link>
       <Link to="/new">New</Link>
       <Link to="/list">MyQuestions</Link>

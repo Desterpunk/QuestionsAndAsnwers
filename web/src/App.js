@@ -20,6 +20,8 @@ import Footer from './components/Footer';
 import firebase from './services/firebase';
 import { SignIn } from './components/SignIn';
 import { SignOut } from './components/SignOut';
+import UserPage from './pages/UserPage';
+import EditUserPage from './pages/EditUserPage';
 
 const auth = firebase.auth();
 
@@ -43,6 +45,8 @@ const App = ({ dispatch }) => {
             <Route exact path="/answers" component={OwnerAnswersPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
             <Route exact path="/new" component={QuestionFormPage} />
+            <Route exact path="/user" component={UserPage} />
+            <Route exact path="/editUser" component={EditUserPage} />
             <Redirect to="/" />
           </Switch>
         </> :

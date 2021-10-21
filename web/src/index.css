@@ -182,4 +182,12 @@ body {
   font-weight: 700;
 }
 
-  
+.name {
+  font-size: 22px;
+  font-weight: bold
+}
+
+.idd {
+  font-size: 14px;
+  font-weight: 600
+}
