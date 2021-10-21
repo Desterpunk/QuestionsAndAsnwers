@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { fetchUser } from '../actions/userActions'
 
-const UserPage = ({name,lastName,email,userId}) => {
+const UserPage = ({dispatch,name,lastName,email,userId,user}) => {
+
+
+    useEffect(() => {
+        console.log(user)
+        dispatch(fetchUser(userId))
+    }, [dispatch])
 
     return(
         <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
@@ -23,10 +30,11 @@ const UserPage = ({name,lastName,email,userId}) => {
     }
 
 const mapStateToProps = state => ({
-    name: state.user.name,
-    lastName: state.user.lastName,
+    name: state.user.user.name,
+    lastName: state.user.user.lastName,
     email: state.auth.email,
-    userId: state.auth.uid
+    userId: state.auth.uid,
+    user: state.user.user
   })
 
 export default connect(mapStateToProps)(UserPage)

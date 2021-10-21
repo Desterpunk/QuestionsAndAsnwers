@@ -1,6 +1,5 @@
 package co.com.sofka.questions.routers;
 
-import co.com.sofka.questions.collections.User;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.model.UserDTO;
@@ -145,8 +144,20 @@ public class QuestionRouter {
                         .bodyValue(result));
 
         return route(
-                POST("/createUser").and(accept(MediaType.APPLICATION_JSON)),
+                POST("/createuser").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(UserDTO.class).flatMap(executor)
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> findUserById(FindUserByIdUseCase findUserByIdUseCase){
+        return route(
+                GET("/finduser/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(findUserByIdUseCase.apply(
+                                        request.pathVariable("id")),
+                                UserDTO.class))
         );
     }
 }

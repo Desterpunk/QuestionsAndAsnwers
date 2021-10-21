@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { updateLastName, updateName } from '../actions/userActions'
+import { postUser, updateLastName, updateName } from '../actions/userActions'
 
-const EditUserPage = ({dispatch,name,lastName}) => {
+const EditUserPage = ({dispatch,name,lastName,userId}) => {
 
     const [inputName, setInputName] = useState(name)
     const [inputLastName, setInputLastName] = useState(lastName)
 
     const editProfile = () => {
-        dispatch(updateName(inputName,inputLastName))
+        let user = {
+            id: userId,
+            name: inputName,
+            lastName: inputLastName
+        }
+        dispatch(postUser(user))
     }
     
     return (
@@ -31,8 +36,9 @@ const EditUserPage = ({dispatch,name,lastName}) => {
 }
 
 const mapStateToProps = state => ({
-    name: state.user.name,
-    lastName: state.user.lastName,
+    name: state.user.user.name,
+    lastName: state.user.user.lastName,
+    userId: state.auth.uid
   })
 
 export default connect(mapStateToProps)(EditUserPage)
