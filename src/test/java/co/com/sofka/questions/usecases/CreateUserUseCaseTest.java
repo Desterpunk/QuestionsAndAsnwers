@@ -1,10 +1,10 @@
 package co.com.sofka.questions.usecases;
 
-import co.com.sofka.questions.collections.Question;
+
 import co.com.sofka.questions.collections.User;
-import co.com.sofka.questions.model.QuestionDTO;
+
 import co.com.sofka.questions.model.UserDTO;
-import co.com.sofka.questions.reposioties.QuestionRepository;
+
 import co.com.sofka.questions.reposioties.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class CreateUserUseCaseTest {
@@ -26,7 +26,7 @@ class CreateUserUseCaseTest {
     UserRepository userRepository;
 
     @Test
-    public void createTest() {
+    void createTest() {
         var userDTO = new UserDTO("01","name","lastName?");
         var user = new User();
         user.setId("01");

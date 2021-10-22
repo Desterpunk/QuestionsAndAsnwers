@@ -11,7 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class UpdateUseCaseTest {
@@ -23,7 +23,7 @@ class UpdateUseCaseTest {
     UpdateUseCase updateUseCase;
 
     @Test
-    public void updateTest() {
+    void updateTest() {
         var questionDTO = new QuestionDTO("01","u01","test?","test","test");
         var question = new Question();
         question.setId("01");

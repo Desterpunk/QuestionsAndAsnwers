@@ -2,9 +2,9 @@ package co.com.sofka.questions.usecases;
 
 import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.collections.Question;
-import co.com.sofka.questions.collections.User;
+
 import co.com.sofka.questions.model.QuestionDTO;
-import co.com.sofka.questions.model.UserDTO;
+
 import co.com.sofka.questions.reposioties.AnswerRepository;
 import co.com.sofka.questions.reposioties.QuestionRepository;
 import org.junit.jupiter.api.Assertions;
@@ -31,7 +31,7 @@ class GetUseCaseTest {
     GetUseCase getUseCase;
 
     @Test
-    public void getUseCaseTest() {
+    void getUseCaseTest() {
         var questionDTO = new QuestionDTO("01","u01","test?","test","test");
 
         var question = new Question();
@@ -51,6 +51,7 @@ class GetUseCaseTest {
 
         var resultQuestionDTO = getUseCase.apply(question.getId()).block();
 
+        assert resultQuestionDTO != null;
         Assertions.assertEquals(resultQuestionDTO.getId(), question.getId());
         Assertions.assertEquals(resultQuestionDTO.getUserId(), question.getUserId());
         Assertions.assertEquals(resultQuestionDTO.getQuestion(), question.getQuestion());

@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class FindUserByIdUseCaseTest {
@@ -27,7 +27,7 @@ class FindUserByIdUseCaseTest {
     FindUserByIdUseCase findUserByIdUseCase;
 
     @Test
-    public void findUserByIdUseCaseTest() {
+     void findUserByIdUseCaseTest() {
         var userDTO = new UserDTO("01","name","lastName?");
         var user = new User();
         user.setId("01");
@@ -38,6 +38,7 @@ class FindUserByIdUseCaseTest {
 
         var resultUserDTO = findUserByIdUseCase.apply(user.getId()).block();
 
+        assert resultUserDTO != null;
         Assertions.assertEquals(resultUserDTO.getId(), user.getId());
         Assertions.assertEquals(resultUserDTO.getName(), user.getName());
         Assertions.assertEquals(resultUserDTO.getLastName(), user.getLastName());

@@ -11,7 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class OwnerListUseCaseTest {
@@ -36,6 +36,7 @@ class OwnerListUseCaseTest {
 
         var resultQuestionDTO =  ownerListUseCase.apply(questionDTO.getUserId()).collectList().block();
 
+        assert resultQuestionDTO != null;
         Assertions.assertEquals(resultQuestionDTO.get(0).getId(), question.getId());
         Assertions.assertEquals(resultQuestionDTO.get(0).getUserId(), question.getUserId());
         Assertions.assertEquals(resultQuestionDTO.get(0).getQuestion(), question.getQuestion());

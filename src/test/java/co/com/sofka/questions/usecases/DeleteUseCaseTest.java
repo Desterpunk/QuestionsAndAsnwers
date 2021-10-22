@@ -12,7 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 
 @SpringBootTest
@@ -27,7 +27,7 @@ class DeleteUseCaseTest {
     AnswerRepository answerRepository;
 
     @Test
-    public void deleteTest(){
+    void deleteTest(){
         var questionDTO = new QuestionDTO("01","u01","test?","test","test");
         var answerDTO = new AnswerDTO("01","01","u01","test");
 
