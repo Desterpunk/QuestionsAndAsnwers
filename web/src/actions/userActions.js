@@ -1,5 +1,5 @@
-// const URL_BASE = 'http://localhost:8080';
-const URL_BASE = ' https://nameless-escarpment-77078.herokuapp.com';
+const URL_BASE = 'http://localhost:8080';
+// const URL_BASE = ' https://nameless-escarpment-77078.herokuapp.com';
 
 export const UPDATE_NAME = 'UPDATENAME'
 export const UPDATE_LASTNAME = 'UPDATE_LASTNAME'

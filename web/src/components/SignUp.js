@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import firebase,{auth} from '../services/firebase';
 
-export const SignIn = () => {
+export const SignUp = () => {
     const [errors, setErrors] = useState("")
     const signUpWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider);
       };
 
-      const signInWithEmail = (event) => {
+      const signUpWithEmail = (event) => {
         event.preventDefault();
         const {email,password} = event.target.elements
 
-        auth.signInWithEmailAndPassword(
+        auth.createUserWithEmailAndPassword(
           email.value,
           password.value)
         .then(user => {})
@@ -23,9 +23,14 @@ export const SignIn = () => {
       }
 
       return (
+
+        <section>
+        <h1 className="text-center">Home</h1>
         <div>
-          <h1>Sign In</h1>
-          <form onSubmit={signInWithEmail}>
+
+        <div>
+          <h1>Sign Up</h1>
+          <form onSubmit={signUpWithEmail}>
                 <div className="form-group">
                     <label>Email address</label>
                     <input type="email" className="form-control" name="email" placeholder="Enter email"/>
@@ -39,10 +44,20 @@ export const SignIn = () => {
                 <div className="btn-toolbar ">
                     <button type="submit" className="btn btn-primary mx-1">Submit</button>
                 </div>
-                <h6>No registrado? <Link to="/signup" ><span className="sign-link">Sign Up</span></Link> </h6>
+                <h6>Ya tiene cuenta? <Link to="/home" ><span className="sign-link">Sign In</span></Link> </h6>
             </form>
             <button className="btn btn-dark" onClick={signUpWithGoogle}>Sign in with google</button>;
         </div>
+
+</div>
+<p>welcome to the question and answer app.</p>
+<div className="text-center">
+<Link to="/questions" className="button">
+  View Questions
+</Link>
+</div>
+
+</section>
         
       );
 }

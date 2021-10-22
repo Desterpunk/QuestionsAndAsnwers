@@ -13,4 +13,8 @@ firebase.initializeApp({
     measurementId: "G-CL82NB276Y"
   });
 
+  const auth = firebase.auth();
+
   export default firebase;
+  
+  export {auth};

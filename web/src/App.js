@@ -17,13 +17,13 @@ import OwnerQuestionsPage from './pages/OwnerQuestionsPage'
 import OwnerAnswersPage from './pages/OwnerAnswersPage'
 import { useAuthState } from "react-firebase-hooks/auth";
 import Footer from './components/Footer';
-import firebase from './services/firebase';
+import { auth } from './services/firebase';
 import { SignIn } from './components/SignIn';
 import { SignOut } from './components/SignOut';
 import UserPage from './pages/UserPage';
 import EditUserPage from './pages/EditUserPage';
+import { SignUp } from './components/SignUp';
 
-const auth = firebase.auth();
 
 const App = ({ dispatch }) => {
   const [user] = useAuthState(auth);
@@ -54,11 +54,12 @@ const App = ({ dispatch }) => {
           <PublicNavbar />
           <Switch>
             <Route exact path="/" component={() => {
-              return <HomePage><SignIn dispatch={dispatch} firebase={firebase} auth={auth} /></HomePage>
+              return <HomePage><SignIn/></HomePage>
             }} />
             <Route exact path="/questions" component={QuestionsPage} />
             <Route exact path="/question/:id" component={SingleQuestionPage} />
             <Route exact path="/answer/:id" component={AnswerFormPage} />
+            <Route exact path="/signup" component={SignUp} />
             <Redirect to="/" />
           </Switch>
         </>
