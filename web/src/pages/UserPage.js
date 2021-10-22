@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchUser } from '../actions/userActions'
+import { SignOut } from '../components/SignOut'
 
 const UserPage = ({dispatch,name,lastName,email,userId}) => {
     useEffect(() => {
@@ -19,9 +20,13 @@ const UserPage = ({dispatch,name,lastName,email,userId}) => {
                 <span className="name mt-3">{email}</span> 
 
                 <span className="idd">{userId}</span>
-                <Link to="/editUser" className="button">
-                    Edit
-                </Link> </div>
+                <div className="btn-toolbar">
+                    <Link to="/editUser" className="btn">
+                        Edit
+                    </Link> </div>
+                    <SignOut dispatch={dispatch}/>
+                </div>
+
             </div>
         </div>
     )

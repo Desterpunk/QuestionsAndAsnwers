@@ -1,6 +1,8 @@
 import React from 'react'
+import { logout } from '../actions/authActions';
+import { auth } from '../services/firebase';
 
-export const SignOut = ({ dispatch,auth,logout }) => {
+export const SignOut = ({ dispatch}) => {
     return (
         auth.currentUser && (
           <button

@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import { login, logout } from './actions/authActions';
+import { login } from './actions/authActions';
 
 import { PublicNavbar, PrivateNavbar } from './components/Navbar'
 import HomePage from './pages/HomePage'
@@ -37,7 +37,7 @@ const App = ({ dispatch }) => {
           <PrivateNavbar />
           <Switch>
             <Route exact path="/" component={() => {
-              return <HomePage><SignOut dispatch={dispatch} auth={auth} logout={logout} /></HomePage>
+              return <HomePage><SignOut dispatch={dispatch}/></HomePage>
             }} />
             <Route exact path="/questions" component={QuestionsPage} />
             <Route exact path="/question/:id" component={SingleQuestionPage} />
