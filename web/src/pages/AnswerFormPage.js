@@ -55,7 +55,7 @@ const FormPage = ({ dispatch, loading, redirect, match,hasErrors, question, user
                     <label htmlFor="answer">Answer</label>
                     <textarea id="answer" {...register("answer", { required: true, maxLength: 300 })} />
                 </div>
-                <button type="submit" className="button" disabled={loading} >{
+                <button type="submit" className="btn mx-5" disabled={loading} >{
                     loading ? "Saving ...." : "Save"
                 }</button>
             </form>

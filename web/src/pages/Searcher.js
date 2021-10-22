@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchQuestionsLike, fetchQuestions } from '../actions/questionActions'
+import { v4 as uuidv4 } from 'uuid';
 const Searcher = ({suggestions, dispatch}) => {
 
     const [state, setState] = useState({
@@ -11,6 +13,7 @@ const Searcher = ({suggestions, dispatch}) => {
 
 
     const handleChange = (event) => {
+        
 
         const userInput = event.currentTarget.value;
         
@@ -56,7 +59,6 @@ const Searcher = ({suggestions, dispatch}) => {
             userInput: e.currentTarget.innerText
         });
 
-
         searchQuestion(e.currentTarget.innerText)
     }
 
@@ -70,9 +72,11 @@ const Searcher = ({suggestions, dispatch}) => {
             <ul className="suggestions">
             {state.filteredSuggestions.map((suggestion) => {
                 return(
-                    <li key={suggestion} onClick={handleClick}>
-                        {suggestion}
-                    </li>
+                      <li key={uuidv4()} onClick={handleClick}>
+                          <Link to={`/question/${suggestions[1]}`}>
+                          {suggestion}
+                          </Link>
+                      </li>
                 )
             })}
             </ul>

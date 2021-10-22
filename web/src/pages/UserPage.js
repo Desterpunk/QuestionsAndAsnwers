@@ -7,7 +7,7 @@ const UserPage = ({dispatch,name,lastName,email,userId,user}) => {
 
 
     useEffect(() => {
-        console.log(user)
+
         dispatch(fetchUser(userId))
     }, [dispatch])
 

@@ -29,8 +29,8 @@ export const SignIn = ({ dispatch,firebase,auth }) => {
                     <label>Password</label>
                     <input type="password" className="form-control" name="password" placeholder="Password"/>
                 </div>
-                <div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="btn-toolbar ">
+                    <button type="submit" className="btn btn-primary mx-1">Submit</button>
                     <button className="btn btn-dark" onClick={signUpWithGoogle}>Sign in with google</button>;
                 </div>
             </form>

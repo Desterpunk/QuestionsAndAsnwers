@@ -45,7 +45,7 @@ body {
     padding: 0 1.5rem;
   }
   
-  section h1 {
+  section h2 {
     font-size: 3rem;
   }
   
@@ -86,7 +86,7 @@ body {
   }
   
   .answer {
-    background: #f0f0f0;
+    background: #ffffff;
     border-radius: 4px;
     padding: 1rem 1.5rem;
     margin: 1rem 0;
@@ -152,7 +152,7 @@ body {
 
 .card-text {
   cursor: pointer;
-  color: #6218b1;
+  color: #000000;
 }
 
 .card-text:hover{

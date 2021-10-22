@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal } from 'reactstrap';
 import useModal from '../hooks/useModal';
+import { DiSqllite } from 'react-icons/di';
 
 export const Answer = ({ answer, excerpt, onDelete}) => {
 
@@ -8,10 +9,10 @@ export const Answer = ({ answer, excerpt, onDelete}) => {
 
   return (
   <article className={excerpt ? 'question-excerpt' : 'question'}>
-    <h2>{answer.answer}</h2>
-   
+    <p><DiSqllite/> {answer.answer}</p>
+    <br/>
     {onDelete && (
-      <button className="button right" onClick={openModal}>DELETE</button>
+      <button className="button" onClick={openModal}>DELETE</button>
     )}
     <div>
       <Modal

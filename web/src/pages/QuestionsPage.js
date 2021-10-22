@@ -22,7 +22,7 @@ const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
     const renderTittleQuestions = () => {
         if (loading) return <p>Loading questions...</p>
         if (hasErrors) return <p>Unable to display questions.</p>        
-        return questions && questions.map(q => tittleQuestions.push(q.question)) 
+        return questions && questions.map(q => tittleQuestions.push(q.question,q.id)) 
     }
 
     return (

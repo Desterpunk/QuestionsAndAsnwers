@@ -10,7 +10,7 @@ export const Question = ({ question, excerpt, onDelete, dispatch, userId}) => {
 
   return (
   <article className={excerpt ? 'question-excerpt' : 'question'}>
-    <h2>{question.question}</h2>
+    <h2><Link to={`/question/${question.id}`}>{question.question}</Link></h2>
 
     {userId === undefined && (
       <p> <span className="card-text"  onClick={() => {
@@ -22,14 +22,17 @@ export const Question = ({ question, excerpt, onDelete, dispatch, userId}) => {
         <p>  {question.category} - <small>{question.type}</small> </p>      
     )}
 
-    {onDelete &&  (
-      <button className="button right" onClick={openModal}>DELETE</button>
-    )}
-    {excerpt && (
-      <Link to={`/question/${question.id}`} className="button">
-        View Question
-      </Link>
-    )}
+    <div className="btn-toolbar">
+      {excerpt && (
+        <Link to={`/question/${question.id}`} className="btn mx-5">
+          View Question
+        </Link>
+      )}
+      {onDelete &&  (
+        <button className="btn button mr-3" onClick={openModal}>DELETE</button>
+      )}
+    </div>
+
     <div>
       <Modal
       isOpen={isOpenModal}>
