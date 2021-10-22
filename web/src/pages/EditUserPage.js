@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { postUser, updateLastName, updateName } from '../actions/userActions'
+import { postUser} from '../actions/userActions'
 
 const EditUserPage = ({dispatch,name,lastName,userId}) => {
 
@@ -21,7 +21,7 @@ const EditUserPage = ({dispatch,name,lastName,userId}) => {
         <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
             <div className="card p-4">
                 <div className=" image d-flex flex-column justify-content-center align-items-center"> 
-                <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /> 
+                <img src="https://i.imgur.com/wvxPV9S.png" alt="profile" height="100" width="100" /> 
                 <input onChange={event => setInputName(event.target.value)} className="name mt-3" placeholder="Name" value={inputName}></input>
                 <input onChange={event => setInputLastName(event.target.value)} className="name mt-3" placeholder="Last Name" value={inputLastName}></input>
                 </div>

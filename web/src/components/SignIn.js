@@ -27,7 +27,7 @@ export const SignIn = ({ dispatch,firebase,auth }) => {
                 </div>
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" name="password" placeholder="Password"/>
+                    <input type="password" className="form-control" autoComplete="on" name="password" placeholder="Password"/>
                 </div>
                 <div className="btn-toolbar ">
                     <button type="submit" className="btn btn-primary mx-1">Submit</button>

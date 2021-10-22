@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { fetchQuestionsLike, fetchQuestions } from '../actions/questionActions'
 import { v4 as uuidv4 } from 'uuid';
 const Searcher = ({suggestions, dispatch}) => {
@@ -73,9 +72,7 @@ const Searcher = ({suggestions, dispatch}) => {
             {state.filteredSuggestions.map((suggestion) => {
                 return(
                       <li key={uuidv4()} onClick={handleClick}>
-                          <Link to={`/question/${suggestions[1]}`}>
                           {suggestion}
-                          </Link>
                       </li>
                 )
             })}

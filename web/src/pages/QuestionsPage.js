@@ -29,7 +29,10 @@ const QuestionsPage = ({ dispatch, loading, questions, hasErrors }) => {
         <section>
             <h1>Questions</h1>
             <Searcher suggestions={tittleQuestions} dispatch={dispatch} type="text" placeholder="Search" id="tittleQuestion" />
-            {renderTittleQuestions(),renderQuestions()}
+            <div hidden>
+            {renderTittleQuestions()}
+            </div>
+            {renderQuestions()}
         </section>
     )
 }
